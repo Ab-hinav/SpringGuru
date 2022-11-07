@@ -1,4 +1,4 @@
-package com.mypetclinic.mypetclinic1;
+package com.mypetclinic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
