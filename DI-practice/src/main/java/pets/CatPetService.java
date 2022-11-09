@@ -1,4 +1,4 @@
-package com.SpringGuru.DIpractice.service;
+package pets;
 
 import org.springframework.stereotype.Service;
 

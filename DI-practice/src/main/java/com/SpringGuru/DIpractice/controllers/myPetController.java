@@ -1,6 +1,6 @@
 package com.SpringGuru.DIpractice.controllers;
 
-import com.SpringGuru.DIpractice.service.PetService;
+import pets.PetService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
