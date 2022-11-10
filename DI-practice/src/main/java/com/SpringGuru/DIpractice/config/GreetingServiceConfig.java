@@ -3,14 +3,12 @@ package com.SpringGuru.DIpractice.config;
 import com.SpringGuru.DIpractice.repository.EnglishGreetingRepository;
 import com.SpringGuru.DIpractice.repository.EnglishGreetingRepositoryImpl;
 import com.SpringGuru.DIpractice.service.*;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 import pets.PetService;
 import pets.PetServiceFactory;
 
 @Configuration
+@ImportResource("classpath:di-practice-config.xml")
 public class GreetingServiceConfig {
 
     @Bean
@@ -63,8 +61,8 @@ public class GreetingServiceConfig {
         return new setterInjectedGreetingService();
     }
 
-    @Bean
-    GreetingServiceImpl greetingService(){
-        return new GreetingServiceImpl();
-    }
+//    @Bean
+//    GreetingServiceImpl greetingService(){
+//        return new GreetingServiceImpl();
+//    }
 }

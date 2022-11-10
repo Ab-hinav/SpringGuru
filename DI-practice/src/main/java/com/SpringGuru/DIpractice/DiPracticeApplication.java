@@ -1,6 +1,7 @@
 package com.SpringGuru.DIpractice;
 
 import com.SpringGuru.DIpractice.controllers.*;
+import com.SpringGuru.DIpractice.service.GreetingService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -37,6 +38,10 @@ public class DiPracticeApplication {
 		System.out.println("------ Constructor");
 		constructorInjectedController constructorInjectedController = (constructorInjectedController) ctx.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.getGreeting());
+
+		System.out.println("------ Greeting Service xml");
+		GreetingService greetingService = (GreetingService) ctx.getBean("greetingService");
+		System.out.println(greetingService.sayGreeting());
 
 
 	}
