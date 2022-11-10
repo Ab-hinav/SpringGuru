@@ -2,6 +2,7 @@ package com.SpringGuru.DIpractice;
 
 import com.SpringGuru.DIpractice.controllers.*;
 import com.SpringGuru.DIpractice.service.GreetingService;
+import com.SpringGuru.DIpractice.service.SingletonBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -42,6 +43,13 @@ public class DiPracticeApplication {
 		System.out.println("------ Greeting Service xml");
 		GreetingService greetingService = (GreetingService) ctx.getBean("greetingService");
 		System.out.println(greetingService.sayGreeting());
+
+		System.out.println("------ Bean Scopes");
+		SingletonBean singletonBean1 = (SingletonBean) ctx.getBean("singletonBean");
+		SingletonBean singletonBean2 = (SingletonBean) ctx.getBean("singletonBean");
+
+
+
 
 
 	}
