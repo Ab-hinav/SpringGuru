@@ -1,7 +1,9 @@
 package com.SpringGuru.DIpractice;
 
 import com.SpringGuru.DIpractice.controllers.*;
+import com.SpringGuru.DIpractice.datasource.FakeDataSource;
 import com.SpringGuru.DIpractice.service.GreetingService;
+import com.SpringGuru.DIpractice.service.PrototypeBean;
 import com.SpringGuru.DIpractice.service.SingletonBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -48,6 +50,14 @@ public class DiPracticeApplication {
 		SingletonBean singletonBean1 = (SingletonBean) ctx.getBean("singletonBean");
 		SingletonBean singletonBean2 = (SingletonBean) ctx.getBean("singletonBean");
 
+		PrototypeBean prototypeBean1 = (PrototypeBean) ctx.getBean("prototypeBean");
+		PrototypeBean prototypeBean2 = (PrototypeBean) ctx.getBean("prototypeBean");
+
+		System.out.println("------- FakeDataSource");
+		FakeDataSource fakeDataSource = (FakeDataSource) ctx.getBean(FakeDataSource.class);
+		System.out.println(fakeDataSource.getUser());
+		System.out.println(fakeDataSource.getPassword());
+		System.out.println(fakeDataSource.getUrl());
 
 
 

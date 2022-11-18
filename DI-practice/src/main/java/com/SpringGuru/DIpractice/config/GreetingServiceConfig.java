@@ -1,14 +1,17 @@
 package com.SpringGuru.DIpractice.config;
 
+import com.SpringGuru.DIpractice.datasource.FakeDataSource;
 import com.SpringGuru.DIpractice.repository.EnglishGreetingRepository;
 import com.SpringGuru.DIpractice.repository.EnglishGreetingRepositoryImpl;
 import com.SpringGuru.DIpractice.service.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import pets.PetService;
 import pets.PetServiceFactory;
 
 @Configuration
 @ImportResource("classpath:di-practice-config.xml")
+@PropertySource("classpath:datasource.properties")
 public class GreetingServiceConfig {
 
     @Bean
@@ -65,4 +68,18 @@ public class GreetingServiceConfig {
 //    GreetingServiceImpl greetingService(){
 //        return new GreetingServiceImpl();
 //    }
+
+    @Bean
+    FakeDataSource fakeDataSource(@Value("${mydb.username}") String username,
+                                  @Value("${mydb.password}") String password,
+                                  @Value("${mydb.url}") String url) {
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUser(username);
+        fakeDataSource.setPassword(password);
+        fakeDataSource.setUrl(url);
+        return fakeDataSource;
+    }
+
+
+
 }
