@@ -11,7 +11,7 @@ import pets.PetServiceFactory;
 
 @Configuration
 @ImportResource("classpath:di-practice-config.xml")
-@PropertySource("classpath:datasource.properties")
+//@PropertySource("classpath:datasource.properties")  // now springboot will pick up application.properties
 public class GreetingServiceConfig {
 
     @Bean
