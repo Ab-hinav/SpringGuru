@@ -1,5 +1,6 @@
 package com.SpringGuru.DIpractice;
 
+import com.SpringGuru.DIpractice.config.sfgconfig;
 import com.SpringGuru.DIpractice.controllers.*;
 import com.SpringGuru.DIpractice.datasource.FakeDataSource;
 import com.SpringGuru.DIpractice.service.GreetingService;
@@ -58,6 +59,12 @@ public class DiPracticeApplication {
 		System.out.println(fakeDataSource.getUser());
 		System.out.println(fakeDataSource.getPassword());
 		System.out.println(fakeDataSource.getUrl());
+
+		System.out.println("------- Config sfg");
+		sfgconfig sfgconfig1 = (sfgconfig) ctx.getBean(sfgconfig.class);
+		System.out.println(sfgconfig1.getUser());
+		System.out.println(sfgconfig1.getPassword());
+		System.out.println(sfgconfig1.getUrl());
 
 
 

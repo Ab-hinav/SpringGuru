@@ -1,0 +1,4 @@
+mydb:
+  user: dev
+  password: devpass
+  url: jdbc:postgresql://localhost:5432/dev

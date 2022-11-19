@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active:
+    - EN
+    - cat
+    - prod
+mydb:
+  user: appyml
+  password: appyml
+  url: jdbc:postgresql://localhost:5432/appyml
+
+---
+spring:
+  profile: prod
+mydb:
+  user: prodyml
+  password: prodyml
+  url: jdbc:postgresql://localhost:5432/prodyml

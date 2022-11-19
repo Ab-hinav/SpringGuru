@@ -4,12 +4,13 @@ import com.SpringGuru.DIpractice.datasource.FakeDataSource;
 import com.SpringGuru.DIpractice.repository.EnglishGreetingRepository;
 import com.SpringGuru.DIpractice.repository.EnglishGreetingRepositoryImpl;
 import com.SpringGuru.DIpractice.service.*;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 import pets.PetService;
 import pets.PetServiceFactory;
 
 @Configuration
+@EnableConfigurationProperties(SfgConstructorConfig.class)
 @ImportResource("classpath:di-practice-config.xml")
 //@PropertySource("classpath:datasource.properties")  // now springboot will pick up application.properties
 public class GreetingServiceConfig {
@@ -70,13 +71,11 @@ public class GreetingServiceConfig {
 //    }
 
     @Bean
-    FakeDataSource fakeDataSource(@Value("${mydb.username}") String username,
-                                  @Value("${mydb.password}") String password,
-                                  @Value("${mydb.url}") String url) {
+    FakeDataSource fakeDataSource(sfgconfig sfgconfig1) {
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUser(username);
-        fakeDataSource.setPassword(password);
-        fakeDataSource.setUrl(url);
+        fakeDataSource.setUser(sfgconfig1.getUser());
+        fakeDataSource.setPassword(sfgconfig1.getPassword());
+        fakeDataSource.setUrl(sfgconfig1.getUrl());
         return fakeDataSource;
     }
 
