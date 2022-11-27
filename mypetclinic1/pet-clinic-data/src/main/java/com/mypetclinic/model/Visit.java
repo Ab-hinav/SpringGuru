@@ -33,4 +33,4 @@ public class Visit extends BaseEntity{
     }
 }
 
-}
+
