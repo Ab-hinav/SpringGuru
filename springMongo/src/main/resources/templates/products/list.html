@@ -1,0 +1,40 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Products</title>
+</head>
+<body>
+    <div th:if="${not #lists.isEmpty(products)}">
+        <h1>Products</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Image URL</th>
+                    <th>List</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.id.toHexString()}"></td>
+                    <td th:text="${product.name}"></td>
+                    <td th:text="${product.price}"></td>
+                    <td th:text="${product.imageUrl}"></td>
+                    <td><a th:href="${'product/show/'+product.id.toHexString()}">View</a></td>
+                    <td><a th:href="${'product/edit/'+product.id.toHexString()}">Edit</a></td>
+                    <td><a th:href="${'product/delete/'+product.id.toHexString()}">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <a th:href="@{/product/new}">Add new product</a>
+        </div>
+    </div>
+</body>
+
+
+
+</html>
