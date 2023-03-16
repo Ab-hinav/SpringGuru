@@ -28,6 +28,12 @@ public class ProductController {
         return "products/list";
     }
 
+    @RequestMapping("/product/new")
+    public String newProduct(Model model){
+        model.addAttribute("productForm", new ProductForm());
+        return "products/productform";
+    }
+
     @GetMapping("/products/show/{id}")
     public String getProduct(@PathVariable String id, Model model){
         model.addAttribute("product", productService.getById(id));
@@ -36,19 +42,19 @@ public class ProductController {
 
     @RequestMapping("/")
     public String redirToList(){
-        return "redirect:/product/list";
+        return "redirect:/products/list";
     }
 
-    @PutMapping("/product/{id}/edit")
+    @RequestMapping("/products/edit/{id}")
     public String edit(@PathVariable String id, Model model){
         Product product = productService.getById(id);
         ProductForm productForm = productToProductForm.convert(product);
 
         model.addAttribute("productForm", productForm);
-        return "product/productform";
+        return "products/productform";
     }
 
-    @DeleteMapping("/product/{id}/delete")
+    @RequestMapping("/products/delete/{id}")
     public String delete(@PathVariable String id){
         productService.delete(id);
         return "redirect:/products/list";
@@ -58,12 +64,12 @@ public class ProductController {
     public String saveOrUpdate(@Validated ProductForm productForm, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
-            return "product/productform";
+            return "products/productform";
         }
 
         Product savedProduct = productService.saveOrUpdateProductForm(productForm);
 
-        return "redirect:/product/show/" + savedProduct.getId();
+        return "redirect:/products/show/" + savedProduct.getId();
     }
 
 
